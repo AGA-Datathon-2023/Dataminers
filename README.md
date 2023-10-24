@@ -2,6 +2,10 @@
 
 # Members
 Zizheng  Zhang (Sean)
+- Bio:
+- - Bachelor of Arts, Beijing University of Chemical Technology (Beijing, 2014-2019)
+- - Junior Software Developer (C#, Unity, and .Net), JHBY Tech Co. Ltd. (Beijing, 2019-2022)
+- - Master of Science, University of Maryland, College Park (College Park, 2022-2023)
 
 Yinming Gao (Randall)
 
