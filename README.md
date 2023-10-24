@@ -40,7 +40,7 @@ We found that there are clusters of counties in both Texas and Georgia where the
 
 Nevada, Idaho, Arizona, Georgia, and Texas are the states with the lowest estimated enrollment rate, meaning that the communities in these five states are very likely being underserved. Policy makers may need to increase the public exposure of Head Start, especially to the low income families, so that the low income families are aware of Head Start and begin enrolling Head Start.
 
-A linear regression model was built to better understand and evaluate the funding policy of Head Start. We achieved an adjusted R^2 score of 0.971, indicating very successful regression modelling. The model suggests strong correlation between funding amount, enrollment amount, and regional personal income level, showing that the funding policy of Head Start is well tailored to the actual situation of each state.
+A linear regression model was built to better understand and evaluate the funding policy of Head Start. We achieved an adjusted $R^{2}$ score of 0.971, indicating very successful regression modelling. The model suggests strong correlation between funding amount, enrollment amount, and regional personal income level, showing that the funding policy of Head Start is well tailored to the actual situation of each state.
 
 # Major Achievements
 To accurately measure the impact and current situation of Head Start, we constrcuted multiple useful metrics to support our argument. The metrics that we have constructed and used include:
