@@ -25,7 +25,7 @@ Tableau: for data visualization.
 PowerPoint: for presentation of insights.
 
 # List of Python Libraries
-Please see the requirement.txt for a comprehensive list of all the used Python libraries in this project.
+Please see the file `requirements.txt` for a comprehensive list of all the used Python libraries in this project.
 For successul execution of our notebook, please run command `pip install -r requirements.txt` in project directory. The command will automatically install all the Python libraries dependencies. The command requires the installation of PIP, a widely used Python package manager.
 
 
