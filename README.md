@@ -16,11 +16,16 @@ Established in 1965, Head Start promotes school readiness for children in low-in
 To better facitilate the course of Head Start, we analyzed public data to estimate the accessibility of Head Start program in the continental United States. We constructed multiple metrics to measure and compare the accessibility of Head Start across the states and counties. The areas where communities might be underserved are identified by our metrics. Our analysis will help policy makers and federal agents to facilitate the equal access to Head Start.
 
 # Technologies In-use
-Python: for data extraction, data analysis, and statistical modelling. (For successul execution of our notebook, please run command `pip install -r requirements.txt` in project directory. The command will automatically install all the Python libraries dependencies using pip)
+Python: for data extraction, data analysis, and statistical modelling.
 
 Tableau: for data visualization.
 
 PowerPoint: for presentation of insights.
+
+# List of Python Libraries
+Please see the requirement.txt for a comprehensive list of all the used Python libraries in this project.
+For successul execution of our notebook, please run command `pip install -r requirements.txt` in project directory. The command will automatically install all the Python libraries dependencies. The command requires the installation of PIP, a widely used Python package manager.
+
 
 # Sample Visualizations
 <img src='sample_visualization/unnamed.png'>
