@@ -2,6 +2,7 @@
 
 # Members
 Zizheng  Zhang (Sean)
+Tel: 301-742-4626
 Bio:
 - Bachelor of Arts, Beijing University of Chemical Technology (Beijing, 2014-2019)
 - Junior Software Developer (C#, Unity, and .Net), JHBY Tech Co. Ltd. (Beijing, 2019-2022)
