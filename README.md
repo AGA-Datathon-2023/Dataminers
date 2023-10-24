@@ -10,7 +10,7 @@ Bio:
 
 Yinming Gao (Randall)
 
-# Abstract - Head Start Accessibility across the Continental U.S.
+# Abstract - Analysis of Head Start Accessibility across the Continental U.S.
 Established in 1965, Head Start promotes school readiness for children in low-income families by offering educational, nutritional, health, social, and other services. The program is rooted in urban, suburban, and rural communities throughout the nation.
 
 To better facitilate the course of Head Start, we analyzed public data to estimate the accessibility of Head Start program in the continental United States. We constructed multiple metrics to measure and compare the accessibility of Head Start across the states and counties. The areas where communities might be underserved are identified by our metrics. Our analysis will help policy makers and federal agents to facilitate the equal access to Head Start.
