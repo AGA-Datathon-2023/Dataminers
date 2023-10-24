@@ -21,6 +21,12 @@ Tableau: for data visualization.
 
 PowerPoint: for presentation of insights.
 
+# Sample Visualizations
+<img src='sample_visualization/unnamed.png'>
+<img src='sample_visualization/unnamed (1).png'>
+<img src='sample_visualization/unnamed (2).png'>
+<img src='sample_visualization/unnamed (3).png'>
+
 # Major Findings
 We found that there are clusters of counties in both Texas and Georgia where the metric children per center have abnormaly high values, indicating potential scarcity of Head Start recourse in those areas. Policy makers may need to find more Head Start participants in those areas so as to facilitate the accessibility of Head Start.
 
