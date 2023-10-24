@@ -42,4 +42,4 @@ To accurately measure the impact and current situation of Head Start, we constrc
 - Enrollment Rate
 - Center Coverage Rate
 
-Each of the metrics are intended to solve one or a group of closely related questions. And they performed well both measuring the program impact and identifying potential inequality. We believe that our metrics can also inspire data analytics practioners to build more precise and unbiased metrics.
+Each of the metrics are intended to solve one or a group of closely related questions. And they performed well both measuring the program impact and identifying potential inequality. We believe that our metrics can also inspire data analytics practioners to build more precise and unbiased metrics in their own domain of work.
