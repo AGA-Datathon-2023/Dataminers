@@ -38,7 +38,7 @@ For successul execution of our notebook, please run command `pip install -r requ
 # Major Findings
 We found that there are clusters of counties in both Texas and Georgia where the metric children per center have abnormaly high values, indicating potential scarcity of Head Start recourse in those areas. Policy makers may need to find more Head Start participants in those areas so as to facilitate the accessibility of Head Start.
 
-Nevada, Idaho, Arizona, Georgia, and Texas are the states with the lowest estimated enrollment rate, meaning that the communities in these five states are very being underserved. Policy makers may need to increase the public exposure of Head Start, especially to the low income families, so that the low income families are aware of Head Start and begin enrolling Head Start.
+Nevada, Idaho, Arizona, Georgia, and Texas are the states with the lowest estimated enrollment rate, meaning that the communities in these five states are very likely being underserved. Policy makers may need to increase the public exposure of Head Start, especially to the low income families, so that the low income families are aware of Head Start and begin enrolling Head Start.
 
 A linear regression model was built to better understand and evaluate the funding policy of Head Start. The model suggests strong correlation between funding amount, enrollment amount, and regional personal income level, showing that the funding policy of Head Start is well tailored to the actual situation of each state.
 
