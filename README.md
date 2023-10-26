@@ -62,3 +62,13 @@ Each of the metrics is intended to solve one or a group of closely related quest
 
 ### Automated Analytics Pipeline
 Apart from conduting data analysis on multiple public datasets, we also managed to develop an automated data analytics pipeline that fetches external datasets and transform them into format ready for visualization and finding insights.
+
+#### Automated Datasets:
+- SAIPE Dataset
+- BEA Regional Economic Dataset
+- Head Start Annual Fiscal Report Dataset
+- Head Start Location Dataset
+
+Our data pipeline provides the utility to extract the above listed datasets by year, and will work consistently in the future as long as the datasource keeps their current interfacing pattern.
+
+Our application also demonstrates the potential of automating data analytics pipeline, which helps practitioners to focus on the analytics tasks without having to write analysis irrelevant codes by themselves, thereby saving their time and better facilitate productivity.
