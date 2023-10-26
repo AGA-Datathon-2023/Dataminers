@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
-from .data import DataFactory
+from .data import data_factory
 
 years_available = [2019, 2020, 2021]
 granularity = ['county', 'state']
-data_factory = DataFactory()
+# data_factory = DataFactory()
 
 
 def index(request: HttpRequest):
@@ -44,16 +44,3 @@ def view(request: HttpRequest):
 
     except Exception as e:
         raise e
-
-
-def child_per_center(request: HttpRequest):
-    try:
-        params = request.GET
-        gra = params['granularity']
-        year = int(params['year'])
-        return render(request, 'child_per_center.html', {
-            'title': 'Children per Center',
-            'value': 21312
-        })
-    except:
-        raise

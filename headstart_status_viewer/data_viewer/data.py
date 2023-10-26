@@ -244,3 +244,6 @@ class DataFactory:
         df_child_poverty['has_center'] = df_child_poverty.index.map(check_has_center)
 
         return df_child_poverty
+    
+
+data_factory = DataFactory()

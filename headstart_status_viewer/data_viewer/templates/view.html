@@ -80,4 +80,14 @@
     </table>
 </div>
 
+<div>
+    <form action="download" method="get">
+        <input type="hidden" name="year" value="{{ year }}">
+        <input type="hidden" name="granularity" value="{{ granularity }}">
+        <div class="form-submit" style="justify-content: center">
+            <input type="submit" class="mainButton" value="Download data">
+        </div>
+    </form>
+</div>
+
 {% endblock %}
