@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %} Head Start Annual Statistics {% endblock %}
+{% block content %}
+<div id="view-select">
+    <form action="view" , method="get" class="data-viewer-form">
+        <div class="form-entry">
+            <label for="year-select">Select a year:</label>
+            <select name="year" id="year-select">
+                {% for year in years_select %}
+                <option>{{ year }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-entry">
+            <label for="data-granularity">Data granularity</label>
+            <select name="granularity" id="data-granularity">
+                {% for g in granularity_select %}
+                <option>{{ g }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-submit">
+            <input type="submit" class="mainButton" value="View data">
+        </div>
+    </form>
+</div>
+{% endblock %}

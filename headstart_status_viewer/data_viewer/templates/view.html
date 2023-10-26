@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% block title %} Head Start Annual Statistics - {{year}} {% endblock %}
+{% block content %}
+<div id="view-select">
+    <form action="view" , method="get" class="data-viewer-form">
+        <div class="form-entry">
+            <label for="year-select">Select a year:</label>
+            <select name="year" id="year-select">
+                {% for y in years_select %}
+                {% if y == year %}
+                <option selected>{{ y }}</option>
+                {% else %}
+                <option>{{ y }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-entry">
+            <label for="data-granularity">Data granularity</label>
+            <select name="granularity" id="data-granularity">
+                {% for g in granularity_select %}
+                {% if g == granularity %}
+                <option selected>{{ g }}</option>
+                {% else %}
+                <option>{{ g }}</option>
+                {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-submit" style="justify-content: center">
+            <input type="submit" class="mainButton" value="View data">
+        </div>
+    </form>
+</div>
+
+<div class="data-block">
+    <h3 style="text-align: center;">{{ granularity }} data</h3>
+    <table>
+        <!-- <thead>
+            <tr>
+                <th>{{ granularity }} level data</th>
+            </tr>
+        </thead> -->
+        <tbody>
+            {% if granularity == 'state' %}
+            <tr>
+                <th>state</th>
+                <th>enrollment count</th>
+                <th>fund per child</th>
+                <th>enrollment rate</th>
+            </tr>
+            {% for state, child_poverty_count, federal_funding, enroll_count, personal_income, fund_per_child, enroll_rate in data %}
+            <tr>
+                <td>{{ state }}</td>
+                <!-- <td>{{ child_poverty_count }}</td>
+                <td>{{ federal_funding }}</td> -->
+                <td> {{enroll_count}}</td>
+                <!-- <td>{{personal_income}}</td> -->
+                <td>{{fund_per_child}}</td>
+                <td>{{enroll_rate}}</td>
+            </tr>
+            {% endfor %}
+            {% elif granularity == 'county' %}
+            <tr>
+                <th>state</th>
+                <th>county</th>
+                <th>children per center</th>
+            </tr>
+            {% for state, county, cpc in data %}
+            <tr>
+                <td>{{ state }}</td>
+                <td>{{ county }}</td>
+                <td>{{ cpc }}</td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
