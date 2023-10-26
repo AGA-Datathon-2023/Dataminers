@@ -1,11 +1,13 @@
 :root {
     --primary-color: #264b65;
-    --secondary-color:  #007b8d;
-    --text-color-main:white;
+    --primay-color-light: #4a6e7a;
+    --secondary-color: #007b8d;
+    --secondary-color-light: #00a0b0;
+    --text-color-main: white;
 }
 
 html {
-    font-family: Lato,sans-serif;
+    font-family: Lato, sans-serif;
     font-size: 100%;
     line-height: 1.5;
     -ms-text-size-adjust: 100%;
@@ -18,14 +20,14 @@ html {
     align-items: center;
     padding: 0px;
     margin: 0px;
-}   
+}
 
 #pageTitle {
     background-color: var(--primary-color);
     width: 100%;
     text-align: center;
     color: var(--text-color-main);
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     margin-bottom: 30px;
 }
 
@@ -48,7 +50,7 @@ div.form-entry {
     display: flex;
     font-size: 16px;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
     min-width: 250px;
     margin: 30px 0px;
@@ -58,28 +60,41 @@ div.form-submit {
     display: flex;
     font-size: 16px;
     flex-direction: row;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     min-width: 250px;
-    margin: 30px 0px;}
+    margin: 30px 0px;
+}
 
 table {
     display: block;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgb(237, 234, 234)
+}
+
+tbody tr:nth-child(even) {
+    background-color: gainsboro;
 }
 
 th {
-    font-size:  18px;
-    font-weight: 20;
+    font-size: 18px;
+    font-weight: 18;
     text-align: left;
-    padding-right: 20px;
-    padding-bottom: 10px;
+    vertical-align: center;
+    padding: 10px 20px;
 }
 
 td {
-    font-size:  18px;
+    font-size: 18px;
+    font-weight: 18;
     text-align: left;
+    vertical-align: center;
     min-width: 100px;
-    margin-right: 20px;
+    padding: 10px 20px;
 }
 
 select {
@@ -89,14 +104,23 @@ select {
 }
 
 .mainButton {
-    border: 1px solid black;
+    border: 1px gray solid;
     border-radius: 5px;
     background-color: var(--secondary-color);
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
     color: white;
-    min-width: 100px;
-    min-height: 30px;
+    min-width: 110px;
+    min-height: 35px;
+}
+
+.mainButton:hover{
+    background-color: var(--secondary-color-light);
 }
 
 input.submit {
     text-align: center;
+}
+
+input.submit:hover {
+    background-color: var(--secondary-color-light);
 }

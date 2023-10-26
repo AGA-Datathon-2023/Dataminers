@@ -36,41 +36,35 @@
 </div>
 
 <div class="data-block">
-    <h3 style="text-align: center;">{{ granularity }} data</h3>
     <table>
-        <!-- <thead>
-            <tr>
-                <th>{{ granularity }} level data</th>
-            </tr>
-        </thead> -->
+        <thead>
+            <h3 style="text-align: center;">{{ year }} statistics  - {{granularity}} level</h3>
+        </thead>
         <tbody>
             {% if granularity == 'state' %}
             <tr>
-                <th>state</th>
-                <th>enrollment count</th>
-                <th>fund per child</th>
-                <th>enrollment rate</th>
+                <th scope="col">state</th>
+                <th scope="col">enrollment count</th>
+                <th scope="col">fund per child</th>
+                <th scope="col">enrollment rate</th>
             </tr>
             {% for state, child_poverty_count, federal_funding, enroll_count, personal_income, fund_per_child, enroll_rate in data %}
             <tr>
-                <td>{{ state }}</td>
-                <!-- <td>{{ child_poverty_count }}</td>
-                <td>{{ federal_funding }}</td> -->
+                <th scope="row">{{ state }}</th>
                 <td> {{enroll_count}}</td>
-                <!-- <td>{{personal_income}}</td> -->
                 <td>{{fund_per_child}}</td>
                 <td>{{enroll_rate}}</td>
             </tr>
             {% endfor %}
             {% elif granularity == 'county' %}
             <tr>
-                <th>state</th>
-                <th>county</th>
-                <th>children per center</th>
+                <th scope="col">state</th>
+                <th scope="col">county</th>
+                <th scope="col">children per center</th>
             </tr>
             {% for state, county, cpc in data %}
             <tr>
-                <td>{{ state }}</td>
+                <th scope="row">{{ state }}</th>
                 <td>{{ county }}</td>
                 <td>{{ cpc }}</td>
             </tr>
