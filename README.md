@@ -50,6 +50,7 @@ Nevada, Idaho, Arizona, Georgia, and Texas are the states with the lowest estima
 A linear regression model was built to better understand and evaluate the funding policy of Head Start. We achieved an adjusted $R^{2}$ score of 0.971, indicating very successful regression modeling. The model suggests a strong correlation between funding amount, enrollment amount, and regional personal income level, showing that the funding policy of Head Start is well tailored to the actual situation of each state.
 
 # Major Achievements
+### Data Analysis
 To accurately measure the impact and current situation of Head Start, we constructed multiple useful metrics to support our argument. The metrics that we have constructed and used include:
 - Children per Center
 - Fund per Child
@@ -58,3 +59,6 @@ To accurately measure the impact and current situation of Head Start, we constru
 - Center Coverage Rate
 
 Each of the metrics is intended to solve one or a group of closely related questions. And they performed well both measuring the program impact and identifying potential inequality. We believe that our metrics can also inspire data analytics practitioners to build more precise and unbiased metrics in their own domain of work.
+
+### Automated Analytics Pipeline
+Apart from conduting data analysis on multiple public datasets, we also managed to develop an automated data analytics pipeline that fetches external datasets and transform them into format ready for visualization and finding insights.
