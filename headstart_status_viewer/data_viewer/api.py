@@ -1,4 +1,4 @@
-from django.http import HttpRequest, HttpResponse, StreamingHttpResponse, FileResponse
+from django.http import HttpRequest, HttpResponse, FileResponse
 from .data import data_factory
 import io
 

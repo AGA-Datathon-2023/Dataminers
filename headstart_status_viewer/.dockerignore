@@ -1,0 +1,6 @@
+./static
+Dockerfile
+/SASUMMARY
+.vscode
+./*/__pycache__
+./*/migrations

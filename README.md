@@ -72,3 +72,5 @@ Apart from conduting data analysis on multiple public datasets, we also managed 
 Our data pipeline provides the utility to extract the above listed datasets by year, and will work consistently in the future as long as the datasource keeps their current interfacing pattern. Our pipelining service is currently implemented in the form of a web server, which, with a set of very consice user interfaces, enables users to fetch data and download them in well formatted CSV format.
 
 Our application also demonstrates the potential of automating data analytics pipeline, which helps practitioners to focus on the analytics tasks without having to write analysis irrelevant codes by themselves, thereby saving their time and better facilitate productivity.
+
+For a preview of our automated data pipeline, please visit http://54.90.52.121/

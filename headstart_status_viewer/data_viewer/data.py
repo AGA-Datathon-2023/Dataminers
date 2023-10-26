@@ -1,6 +1,10 @@
-import io, zipfile, os, requests
+import io
+import zipfile
+import os
+import requests
 from typing import Callable
-import pandas as pd, numpy as np
+import pandas as pd
+import numpy as np
 
 
 df_state_abbr: pd.DataFrame | None = pd.read_csv(os.path.join(os.getcwd(), './data_viewer/states-abbr.csv'))
@@ -201,6 +205,8 @@ class DataFactory:
     def get_state_data(self, year: int) -> pd.DataFrame:
         df_hs_fiscal = self.__head_start_fiscal.get_data(year)
         df_state_econ = self.__statewise_econ_data.get_data(year)
+        # print(df_hs_fiscal.shape)
+        # print( df_state_econ.shape)
         df_data = pd.merge(df_hs_fiscal, df_state_econ, on='state', how='right')
         df_data['fund_per_child'] = np.round(df_data.federal_funding / df_data.enroll_count.astype(float), 3)
         df_data['funding_index'] = np.round(df_data.federal_funding / df_data.personal_income / df_data.enroll_count, 3)
@@ -212,6 +218,8 @@ class DataFactory:
         col = df_state_child_poverty.columns.tolist()
         col[-1] = 'state_name'
         df_state_child_poverty.columns = col
+        
+        # print(df_state_child_poverty.shape, df_data.shape)
         df_state_child_poverty = pd.merge(
             df_state_child_poverty, df_data, on='state', how='left', suffixes=('', '_headstart')).drop(columns=['state_name_headstart']
             )
