@@ -25,7 +25,11 @@ Established in 1965, Head Start promotes school readiness for children in low-in
 To better facilitate the course of Head Start, we analyzed public data to estimate the accessibility of the Head Start program in the continental United States. We constructed multiple metrics to measure and compare the accessibility of Head Start across the states and counties. The areas where communities might be underserved are identified by our metrics. Our analysis will help policy makers and federal agents to facilitate equal access to Head Start.
 
 # Technologies In-use
-Python: for data extraction, data analysis, and statistical modeling.
+Python: for data extraction, data analysis, statistical modeling, and Web API development.
+
+Docker: for containerized deployment of web application
+
+HTML, CSS, javascript: for web page design and implement
 
 Tableau: for data visualization.
 
