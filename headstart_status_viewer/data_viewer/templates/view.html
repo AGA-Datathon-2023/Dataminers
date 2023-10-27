@@ -2,8 +2,8 @@
 {% load static %}
 {% block title %} Head Start Annual Statistics - {{year}} {% endblock %}
 {% block content %}
-<div id="view-select">
-    <form action="view" , method="get" class="data-viewer-form">
+<div id="data-form-div">
+    <form method="get" class="data-viewer-form">
         <div class="form-entry">
             <label for="year-select">Select a year:</label>
             <select name="year" id="year-select">
@@ -30,10 +30,13 @@
             </select>
         </div>
 
-        <div class="form-submit" style="justify-content: center">
-            <input type="submit" class="mainButton" value="View data">
+        <div class="form-submit" style="justify-content: space-evenly">
+            <input type="submit" class="mainButton" formaction="view" value="View data">
+            <input type="submit" class="mainButton" formaction="download" value="Download data">
         </div>
+
     </form>
+
 </div>
 
 <div class="data-block">
@@ -67,16 +70,6 @@
             {% endif %}
         </tbody>
     </table>
-</div>
-
-<div>
-    <form action="download" method="get">
-        <input type="hidden" name="year" value="{{ year }}">
-        <input type="hidden" name="granularity" value="{{ granularity }}">
-        <div class="form-submit" style="justify-content: center">
-            <input type="submit" class="mainButton" value="Download data">
-        </div>
-    </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

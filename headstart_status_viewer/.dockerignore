@@ -4,3 +4,4 @@ Dockerfile
 .vscode
 ./*/__pycache__
 ./*/migrations
+*.yaml

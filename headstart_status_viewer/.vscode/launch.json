@@ -12,6 +12,10 @@
             "args": [
                 "runserver"
             ],
+            "env": {
+                "APP_DEBUG": "1",
+                "APP_HOST": "127.0.0.1",
+            },
             "django": true,
             "justMyCode": true
         }
