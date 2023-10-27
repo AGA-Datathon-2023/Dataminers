@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %} Head Start Annual Statistics - {{year}} {% endblock %}
 {% block content %}
 <div id="view-select">
@@ -44,28 +45,22 @@
             {% if granularity == 'state' %}
             <tr>
                 <th scope="col">state</th>
-                <th scope="col">enrollment count</th>
-                <th scope="col">fund per child</th>
                 <th scope="col">enrollment rate</th>
             </tr>
-            {% for state, child_poverty_count, federal_funding, enroll_count, personal_income, fund_per_child, enroll_rate in data %}
+            {% for state, enroll_rate in data %}
             <tr>
                 <th scope="row">{{ state }}</th>
-                <td> {{enroll_count}}</td>
-                <td>{{fund_per_child}}</td>
                 <td>{{enroll_rate}}</td>
             </tr>
             {% endfor %}
             {% elif granularity == 'county' %}
             <tr>
-                <th scope="col">state</th>
                 <th scope="col">county</th>
                 <th scope="col">children per center</th>
             </tr>
-            {% for state, county, cpc in data %}
+            {% for state_county, cpc in data %}
             <tr>
-                <th scope="row">{{ state }}</th>
-                <td>{{ county }}</td>
+                <th scope="row">{{ state_county }}</th>
                 <td>{{ cpc }}</td>
             </tr>
             {% endfor %}
@@ -83,5 +78,34 @@
         </div>
     </form>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<canvas id="chart" class="chart-canvas" width="500" height="400"></canvas>
+<script>
+    var ctx = document.getElementById('chart');
+    var visConfig = JSON.parse('{{ vis_config | escapejs }}');
+    var data = {
+        labels: visConfig.data.map(arr => arr[0]),
+        datasets: [{
+            label: visConfig.title ?? "",
+            data: visConfig.data.map(arr => arr[arr.length -1]),
+            // backgroundColor: [
+            //     'red',
+            //     'blue',
+            //     'yellow',
+            //     'green',
+            //     'purple',
+            //     'orange'
+            // ]
+        }]
+    };
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+                responsive: false
+            }
+    });
+</script>
 
 {% endblock %}

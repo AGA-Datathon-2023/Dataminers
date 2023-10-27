@@ -1,0 +1,29 @@
+services:
+
+  app:
+    image: chaconn3/hs_viewer:latest
+    restart: always
+    ports:
+      - 8000:8000
+    environment:
+      APP_DEBUG: 0
+      APP_DB_NAME: app-mysql # name of the database
+      APP_DB_HOST: mysql
+      APP_DB_USER: root
+      APP_DB_PWD: root
+    depends_on:
+      - mysql
+  
+  mysql: # main db
+    image: mysql:8.0
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: app-mysql
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - app-mysql:/var/lib/mysql
+
+volumes:
+  app-mysql:

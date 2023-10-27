@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse, FileResponse
-from .data import data_factory
+from .dataPipeline import data_factory
 import io
 
 class API:

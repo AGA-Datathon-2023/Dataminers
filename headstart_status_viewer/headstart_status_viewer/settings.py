@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rbr@5*yiq6#y4+o2sfotkh97ky8@5x6k1^e@+!yj5z26bq^sh5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("APP_DEBUG", True))
 
 ALLOWED_HOSTS = []
 
@@ -75,12 +75,28 @@ WSGI_APPLICATION = 'headstart_status_viewer.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.environ.get("APP_DB_NAME"),
+            "HOST":os.environ.get("APP_DB_HOST"),
+            "PORT":3306,
+            "USER":os.environ.get("APP_DB_USER"),
+            "PASSWORD":os.environ.get("APP_DB_PWD"),
+            'MYSQL': {
+                'driver': 'pymysql',
+                'charset': 'utf8mb4',
+            },
+        }
+    }
 
 
 # Password validation
