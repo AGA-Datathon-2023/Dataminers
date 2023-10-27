@@ -1,6 +1,7 @@
 Django==4.2.1
 numpy==1.23.2
 pandas==1.4.4
+PyMySQL==1.1.0
 Requests==2.31.0
 daphne
 gunicorn
@@ -8,4 +9,3 @@ xlrd
 lxml
 html5lib
 BeautifulSoup4
-pymysql

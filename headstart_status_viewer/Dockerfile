@@ -20,7 +20,10 @@ RUN chmod -R -777 /app/static
 
 EXPOSE 8000
 
+ENV PYTHONDONTWRITEBYTECODE=0
+ENV PYTHONUNBUFFERED=0
+
 CMD python manage.py makemigrations data_viewer && \
     python manage.py migrate && \
     python manage.py collectstatic --noinput && \
-    gunicorn --timeout 400 --bind 0.0.0.0:8000 headstart_status_viewer.wsgi:application
+    gunicorn --timeout 500 --bind 0.0.0.0:8000 headstart_status_viewer.wsgi:application

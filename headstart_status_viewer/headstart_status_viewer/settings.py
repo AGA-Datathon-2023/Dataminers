@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "data_viewer.mdw.SimpleAntiScrapperMdw"
 ]
 
 ROOT_URLCONF = 'headstart_status_viewer.urls'

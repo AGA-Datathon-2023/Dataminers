@@ -27,9 +27,9 @@ def log_event(request: HttpRequest, status_code: int):
     try:
         params = request.GET.dict() or request.POST.dict()
         path = request.path
-        event = request.method
+        met = request.method
         new_record = Transaction(
-            event=event, path=path, params=params, status_code=status_code)
+            method=met, path=path, params=params, status_code=status_code)
         new_record.save()
     except Exception as e:
         raise e
