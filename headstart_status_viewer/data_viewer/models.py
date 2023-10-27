@@ -6,16 +6,16 @@ class DBModelBase(models.Model):
     datetime = models.DateTimeField(auto_now_add=True,)
 
 
-class RequestRecord(DBModelBase):
+class Transaction(DBModelBase):
 
-    EVENT = [
+    method = [
         ('GET', 'GET'),
         ('POST', 'POST'),
         ('PUT', 'PUT'),
         ('DELETE', 'DELETE'),
     ]
 
-    event = models.CharField(max_length=10, choices=EVENT)
+    method = models.CharField(max_length=10, choices=method)
     path = models.CharField(max_length=100)
     params = models.CharField(max_length=100)
     status_code = models.IntegerField()

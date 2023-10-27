@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from .dataPipeline import data_factory
-from .models import RequestRecord
+from .models import Transaction
 import json
 from datetime import datetime
 import numpy as np
@@ -28,7 +28,7 @@ def log_event(request: HttpRequest, status_code: int):
         params = request.GET.dict() or request.POST.dict()
         path = request.path
         event = request.method
-        new_record = RequestRecord(
+        new_record = Transaction(
             event=event, path=path, params=params, status_code=status_code)
         new_record.save()
     except Exception as e:
