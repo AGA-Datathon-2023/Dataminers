@@ -7,10 +7,14 @@ import pandas as pd
 import numpy as np
 
 
-df_state_abbr: pd.DataFrame | None = pd.read_csv(os.path.join(os.getcwd(), './data_viewer/states-abbr.csv'))
+df_state_abbr: pd.DataFrame | None = pd.read_csv(os.path.join(os.getcwd(), './data_viewer/states-abbr.csv'))    # state abbr to full name mapping
 
 
 class _HeadStartLocation:
+
+    """
+    auto fetch most recent location data
+    """
 
     __cache:pd.DataFrame | None = None
 
@@ -30,6 +34,10 @@ class _HeadStartLocation:
 
 
 class _HeadStartFiscal:
+
+    """
+    auto fetch annual fiscal data of given year, assuming data available at the source
+    """
 
     __cache:dict[int, pd.DataFrame | None] = {}
 
@@ -62,6 +70,10 @@ class _HeadStartFiscal:
 
 
 class _SAIPE:
+
+    """
+    auto fetch annual SAIPE data
+    """
 
     __cache:dict[int, pd.DataFrame | None] = {}
 
@@ -115,6 +127,14 @@ class _SAIPE:
 
 
 class _StatewiseEconData:
+        
+        """
+        auto fetch BEA Regional Econ Data
+        compatible to annual query from 1998 to 2022
+        2023 data will be available in 2024
+        historical data prior to 1998 needs further pipelining
+        """
+        
     
         __cache:dict[int, pd.DataFrame | None] = {}
         __data_dir = os.path.join(os.getcwd(), 'SASUMMARY')

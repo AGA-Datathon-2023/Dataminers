@@ -1,5 +1,6 @@
 child_poverty_merged_10-22.csv
 enroll_and_fund.csv
 **/__pycache__/
-**/.vscode/
+**/.vscode
 /headstart_status_viewer/SASUMMARY
+~*
