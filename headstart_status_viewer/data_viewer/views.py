@@ -7,7 +7,7 @@ from datetime import datetime
 import numpy as np
 
 years_available = [2019, 2020, 2021]
-granularity = ['county', 'state']
+granularity_available = ['county', 'state']
 
 class CustomJSONEncoder(json.JSONEncoder):
 
@@ -52,7 +52,7 @@ def index(request: HttpRequest):
     return render(request, 'index.html', {
         'title': 'Head Start Annual Statistics',
         'years_select': years_available,
-        'granularity_select': granularity,
+        'granularity_select': granularity_available,
     })
 
 
@@ -60,20 +60,19 @@ def index(request: HttpRequest):
 def view(request: HttpRequest):
     try:
         params = request.GET.dict()
-        gra = params['granularity']
+        selected_granularity = params['granularity']
         year = int(params['year'])
-        if gra == 'state':
+        if selected_granularity == 'state':
             data = data_factory.get_state_data(year)
             data = data[['state', 'enroll_rate']]
-            data = data.sort_values(
-                by='enroll_rate', ascending=False).head(5).values
+            data = data.sort_values(by='enroll_rate', ascending=False).head(5).values
             vis_config = json.dumps({
                 'title': 'Top 5 States with Highest Enroll Rate',
                 'data': data.tolist()
                 }, 
                 cls=CustomJSONEncoder
             )
-        elif gra == 'county':
+        elif selected_granularity == 'county':
             data = data_factory.get_county_data(year)
             data = data[['state_county', 'cpc', ]]
             data = data.sort_values(by='cpc', ascending=False).head(5).values
@@ -89,9 +88,9 @@ def view(request: HttpRequest):
         return render(request, 'view.html', {
             'title': 'Head Start Annual Statistics',
             'years_select': years_available,
-            'granularity_select': granularity,
+            'granularity_select': granularity_available,
             'year': year,
-            'granularity': gra,
+            'granularity': selected_granularity ,
             'data': data,
             'vis_config': vis_config,
         })
