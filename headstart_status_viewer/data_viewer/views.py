@@ -3,23 +3,10 @@ from django.http import HttpResponse, HttpRequest
 from .dataPipeline import data_factory
 from .models import Transaction
 import json
-from datetime import datetime
-import numpy as np
+from .utils import CustomJSONEncoder
 
 years_available = [2019, 2020, 2021]
 granularity_available = ['county', 'state']
-
-class CustomJSONEncoder(json.JSONEncoder):
-
-    def default(self, obj):
-        if isinstance(obj, datetime):
-            return obj.astimezone().isoformat()
-        elif isinstance(obj, np.integer):
-            return int(obj)
-        elif isinstance(obj, np.floating):
-            return float(obj)
-        else:
-            return super().default(obj)
         
 
 

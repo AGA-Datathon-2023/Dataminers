@@ -79,4 +79,4 @@ Our data pipeline provides the utility to extract the above listed datasets by y
 
 Our application also demonstrates the potential of automating data analytics pipeline, which helps practitioners to focus on the analytics tasks without having to write analysis irrelevant codes by themselves, thereby saving their time and better facilitate productivity.
 
-For a preview of our automated data pipeline, please visit http://54.90.52.121/
+For a preview of our automated data pipeline, please visit http://54.237.226.144/
