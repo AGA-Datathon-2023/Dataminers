@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Head Start Annual Statistics - {{year}} {% endblock %}
+{% block content %}
+
+<div class="error-block">
+    <h2 style="text-align: center;">An error has occured</h2>
+    <hr>
+    <p style="text-align: center;">It appears that the data you are looking for have not yet been published. Please try to query data of other year/granularity. </p>
+</div>
+
+{% endblock %}

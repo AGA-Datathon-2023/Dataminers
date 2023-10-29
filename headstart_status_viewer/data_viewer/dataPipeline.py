@@ -5,9 +5,19 @@ import requests
 from typing import Callable
 import pandas as pd
 import numpy as np
+from .customExceptions import DataNotFoundError
 
 
 df_state_abbr: pd.DataFrame | None = pd.read_csv(os.path.join(os.getcwd(), './data_viewer/states-abbr.csv'))    # state abbr to full name mapping
+STATE_FILTER = ['US', 'PR', 'VI', 'HI', 'GU', 'MP', 'AS', 'AK']
+
+def data_validator(func: Callable) -> Callable:
+    def wrapper(*args, **kwargs) -> pd.DataFrame:
+        data = func(*args, **kwargs)
+        if data is None:
+            raise DataNotFoundError(f'Data not available for {func.__name__} with params {args if args else None} {kwargs if kwargs else None}')
+        return data
+    return wrapper
 
 
 class _HeadStartLocation:
@@ -18,6 +28,7 @@ class _HeadStartLocation:
 
     __cache:pd.DataFrame | None = None
 
+    @data_validator
     @staticmethod
     def get_data() -> pd.DataFrame:
         if _HeadStartLocation.__cache is None:
@@ -26,7 +37,11 @@ class _HeadStartLocation:
     
     @staticmethod
     def _get_data():
-        _HeadStartLocation.__cache =pd.read_csv('https://eclkc.ohs.acf.hhs.gov/sites/default/files/locatordata/ALL_all.csv')
+
+        df = pd.read_csv('https://eclkc.ohs.acf.hhs.gov/sites/default/files/locatordata/ALL_all.csv')
+        df = df[df.county.str.contains('County|Parish').fillna(False)]
+        df['state_county'] = df['state'] + " " + df['county']
+        _HeadStartLocation.__cache = df
 
     @staticmethod
     def clear_cache():
@@ -41,6 +56,7 @@ class _HeadStartFiscal:
 
     __cache:dict[int, pd.DataFrame | None] = {}
 
+    @data_validator
     @staticmethod
     def get_data(year: int) -> pd.DataFrame:
         if _HeadStartFiscal.__cache.get(year, None) is None:
@@ -52,14 +68,13 @@ class _HeadStartFiscal:
         try:
             df = pd.read_html(f'https://eclkc.ohs.acf.hhs.gov/about-us/article/head-start-program-facts-fiscal-year-{year}')
             df =  df[1].iloc[2:, :3]
-            df.columns = ['state_name', 'federal_funding', 'enroll_count', ]
+            df.columns = ['state_name', 'federal_funding', 'enrollment_count', ]
             df = pd.merge(df, df_state_abbr, left_on='state_name', right_on='State', how='left').drop('State', axis=1)
-            df.columns = ['state_name', 'federal_funding', 'enroll_count', 'state' ]
+            df.columns = ['state_name', 'federal_funding', 'enrollment_count', 'state' ]
             df.federal_funding = df.federal_funding.map(lambda s: s.replace('$', '').replace(',', '')).astype(float)
-            df.enroll_count = df.enroll_count.astype(int)
-            df = df[df.state != 'US']
+            df.enrollment_count = df.enrollment_count.astype(int)
+            df = df[df.state.map(lambda s: s not in STATE_FILTER)]
         except Exception as e:
-            print(e)
             df = None   
         finally:
             _HeadStartFiscal.__cache[year] = df
@@ -77,6 +92,7 @@ class _SAIPE:
 
     __cache:dict[int, pd.DataFrame | None] = {}
 
+    @data_validator
     @staticmethod
     def get_data(year: int) -> pd.DataFrame:
         if _SAIPE.__cache.get(year, None) is None:
@@ -96,7 +112,6 @@ class _SAIPE:
                 try:
                     return int(v)
                 except Exception as e:
-                    print(e, v)
                     return 0
         
             teen_poverty = df_base.iloc[1:, 10].map(to_int)
@@ -116,7 +131,6 @@ class _SAIPE:
             df['state_county'] = df.state + ' ' + df.county
 
         except Exception as e:
-            print(e)
             df = None
         finally:
             _SAIPE.__cache[year] = df
@@ -139,6 +153,7 @@ class _StatewiseEconData:
         __cache:dict[int, pd.DataFrame | None] = {}
         __data_dir = os.path.join(os.getcwd(), 'SASUMMARY')
     
+        @data_validator
         @staticmethod
         def get_data(year: int) -> pd.DataFrame:
             if _StatewiseEconData.__cache.get(year, None) is None:
@@ -166,13 +181,14 @@ class _StatewiseEconData:
                 personal_income = df_temp.iloc[4, offset]
                 df_state_economic.loc[len(df_state_economic)] = [state, rgdp, personal_income]
 
-            df_state_economic = df_state_economic[df_state_economic.state != 'US']
+            df_state_economic = df_state_economic[df_state_economic.state.map(lambda s: s not in STATE_FILTER)]
             df_state_economic.personal_income = df_state_economic.personal_income.astype(float)
             df_state_economic.rgdp = df_state_economic.rgdp.astype(float)
             _StatewiseEconData.__cache[year] = df_state_economic
 
         @staticmethod
         def _fetch_datasource():
+            # fetch data from BEA and extract to local
             try:
                 getHttp = requests.get(
                     f'https://apps.bea.gov/regional/zip/SASUMMARY.zip', 
@@ -183,7 +199,6 @@ class _StatewiseEconData:
                 zipfile.ZipFile(file=io.BytesIO(getHttp.content)).extractall(_StatewiseEconData.__data_dir)
                 
             except Exception as e:
-                print(e)
                 raise
     
         @staticmethod
@@ -228,8 +243,8 @@ class DataFactory:
         # print(df_hs_fiscal.shape)
         # print( df_state_econ.shape)
         df_data = pd.merge(df_hs_fiscal, df_state_econ, on='state', how='right')
-        df_data['fund_per_child'] = np.round(df_data.federal_funding / df_data.enroll_count.astype(float), 3)
-        df_data['funding_index'] = np.round(df_data.federal_funding / df_data.personal_income / df_data.enroll_count, 3)
+        df_data['fund_per_child'] = np.round(df_data.federal_funding / df_data.enrollment_count.astype(float), 3)
+        df_data['funding_index'] = np.round(df_data.federal_funding / df_data.personal_income / df_data.enrollment_count, 3)
 
         df_saipe = self.__saipe.get_data(year)
         df_state_child_poverty = df_saipe.groupby('state')['child_poverty_count'].sum().to_frame()
@@ -243,13 +258,12 @@ class DataFactory:
         df_state_child_poverty = pd.merge(
             df_state_child_poverty, df_data, on='state', how='left', suffixes=('', '_headstart')).drop(columns=['state_name_headstart']
             )
-        df_state_child_poverty['enroll_rate'] = np.round(df_state_child_poverty.enroll_count.astype(float) / df_state_child_poverty.child_poverty_count.astype(float), 3)
+        df_state_child_poverty['enrollment_rate'] = np.round(df_state_child_poverty.enrollment_count.astype(float) / df_state_child_poverty.child_poverty_count.astype(float), 3)
         return df_state_child_poverty
     
     @cachable
     def get_county_data(self, year:int) -> pd.DataFrame:
         df_hs_location = self.__head_start_location.get_data()
-        df_hs_location['state_county'] = df_hs_location['state'] + " " + df_hs_location['county']
         df_child_poverty = self.__saipe.get_data(year)
         
         def get_child_per_center(children:float, centers: float):

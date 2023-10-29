@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.index,),
     path('view', views.view,),
     path('download', api.API.download,),
+    path('error', views.error, name='error')
 ]

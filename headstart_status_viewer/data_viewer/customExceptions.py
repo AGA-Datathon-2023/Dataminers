@@ -1,2 +1,4 @@
-class NotFoundException(Exception):
-    pass
+class DataNotFoundError(Exception):
+    
+    def __init__(self, *args: object) -> None:
+        super().__init__(*args)

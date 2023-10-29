@@ -42,17 +42,21 @@
 <div class="data-block">
     <table>
         <thead>
-            <h3 style="text-align: center;">{{ year }} statistics  - {{granularity}} level</h3>
+            <h2 style="text-align: center;">{{ year }} statistics  - {{granularity}} level</h2>
         </thead>
         <tbody>
             {% if granularity == 'state' %}
             <tr>
                 <th scope="col">state</th>
+                <th scope="col">fund per child</th>
+                <th scope="col">real GDP</th>
                 <th scope="col">enrollment rate</th>
             </tr>
-            {% for state, enroll_rate in data %}
+            {% for state, fpc, rgdp,  enroll_rate in data %}
             <tr>
                 <th scope="row">{{ state }}</th>
+                <td>{{fpc}}</td>
+                <td>{{rgdp}}</td>
                 <td>{{enroll_rate}}</td>
             </tr>
             {% endfor %}
@@ -71,6 +75,8 @@
         </tbody>
     </table>
 </div>
+
+<div><h2>Visualization</h2></div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <canvas id="chart" class="chart-canvas" width="500" height="400"></canvas>
