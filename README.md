@@ -70,13 +70,13 @@ Each of the metrics is intended to solve one or a group of closely related quest
 Apart from conduting data analysis on multiple public datasets, we also managed to develop an automated data analytics pipeline that fetches external datasets and transform them into format ready for visualization and finding insights.
 
 #### Automated Datasets:
-- SAIPE Dataset
-- BEA Regional Economic Dataset
-- Head Start Annual Fiscal Report Dataset
-- Head Start Location Dataset
+- SAIPE Dataset @ https://www.census.gov/data/datasets/2021/demo/saipe/2021-state-and-county.html
+- BEA Regional Economic Dataset @ https://apps.bea.gov/regional/downloadzip.cfm
+- Head Start Annual Fiscal Report Dataset @ https://eclkc.ohs.acf.hhs.gov/about-us/article/head-start-program-facts-fiscal-year-2021
+- Head Start Location Dataset @ https://eclkc.ohs.acf.hhs.gov/sites/default/files/locatordata/ALL_all.csv
 
 Our data pipeline provides the utility to extract the above listed datasets by year, and will work consistently in the future as long as the datasource keeps their current interfacing pattern. Our pipelining service is currently implemented in the form of a web server, which, with a set of very consice user interfaces, enables users to fetch data and download them in well formatted CSV format.
 
 Our application also demonstrates the potential of automating data analytics pipeline, which helps practitioners to focus on the analytics tasks without having to write analysis irrelevant codes by themselves, thereby saving their time and better facilitate productivity.
 
-For a preview of our automated data pipeline, please visit http://54.237.226.144/
+For a preview of our automated data pipeline, please visit http://chaconn3.me/  (this domain name is for demo purpose only)
