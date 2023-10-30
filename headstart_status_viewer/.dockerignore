@@ -3,5 +3,5 @@ Dockerfile
 /SASUMMARY
 .vscode
 ./*/__pycache__
-./*/migrations
+**/migrations/
 *.yaml

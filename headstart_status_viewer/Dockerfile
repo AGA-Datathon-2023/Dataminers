@@ -12,7 +12,7 @@ RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=./requirements.txt,target=/app/requirements.txt \
     python -m pip install -r requirements.txt
 
-COPY ./ /app/
+COPY ./ /app
 
 RUN mkdir /app/static
 RUN chmod -R -770 /app
