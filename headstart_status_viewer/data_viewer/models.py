@@ -22,3 +22,4 @@ class Transaction(DBModelBase):
     path = models.CharField(max_length=100)
     params = models.CharField(max_length=100)
     status_code = models.IntegerField()
+    ip = models.CharField(max_length=15, default='', null=False)

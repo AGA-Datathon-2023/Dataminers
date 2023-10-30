@@ -18,11 +18,11 @@ granularity_available = ['county', 'state']
 
 def log_event(request: HttpRequest, status_code: int):
     try:
+        ip = request.META.get('REMOTE_ADDR')
         params = request.GET.dict() or request.POST.dict()
         path = request.path
         met = request.method
-        new_record = Transaction(
-            method=met, path=path, params=params, status_code=status_code)
+        new_record = Transaction(ip = ip, method=met, path=path, params=params, status_code=status_code)
         new_record.save()
     except Exception as e:
         raise e
