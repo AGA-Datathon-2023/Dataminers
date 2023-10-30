@@ -1,6 +1,8 @@
 from django.http import HttpRequest, HttpResponse, FileResponse
+from django.shortcuts import redirect
 from .dataPipeline import data_factory
 import io
+from .customExceptions import DataNotFoundError, DataFormatError
 
 class API:
     @staticmethod
@@ -21,5 +23,12 @@ class API:
                 content = io_obj.getvalue()
             resp = FileResponse(content, content_type='text/csv', filename='data.csv', as_attachment=True)
             return resp
-        except:
-            pass
+        
+        except DataNotFoundError as e:
+            return redirect('error',)
+
+        except DataFormatError as e:
+            return redirect('error',)
+        
+        except Exception as e:
+            return redirect('error',)

@@ -5,7 +5,7 @@ import requests
 from typing import Callable
 import pandas as pd
 import numpy as np
-from .customExceptions import DataNotFoundError
+from .customExceptions import DataNotFoundError, DataFormatError
 
 
 df_state_abbr: pd.DataFrame | None = pd.read_csv(os.path.join(os.getcwd(), './data_viewer/states-abbr.csv'))    # state abbr to full name mapping

@@ -5,7 +5,7 @@ from .models import Transaction
 import json
 from .utils import CustomJSONEncoder
 from datetime import datetime
-from .customExceptions import DataNotFoundError
+from .customExceptions import DataNotFoundError, DataFormatError
 
 
 def get_available_years():
@@ -76,7 +76,7 @@ def view(request: HttpRequest):
                 cls=CustomJSONEncoder
             )
         else:
-            raise Exception('Invalid granularity')
+            raise DataFormatError('Invalid granularity')
 
         return render(request, 'view.html', {
             'title': 'Head Start Annual Statistics',
@@ -91,6 +91,9 @@ def view(request: HttpRequest):
     except DataNotFoundError as e:
         return redirect('error',)
 
+    except DataFormatError as e:
+        return redirect('error',)
+    
     except Exception as e:
         raise e
 
