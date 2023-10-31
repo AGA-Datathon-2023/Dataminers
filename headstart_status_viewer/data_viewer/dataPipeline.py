@@ -163,7 +163,7 @@ class _StatewiseEconData:
         @staticmethod
         def _get_data(year: int) -> pd.DataFrame:
             if year < 1998 or year > 2022:
-                raise Exception('Data not available for this year')
+                raise DataNotFoundError('Data not available for this year')
 
             if not os.path.exists(_StatewiseEconData.__data_dir):
                 _StatewiseEconData._fetch_datasource()

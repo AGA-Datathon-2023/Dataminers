@@ -3,8 +3,11 @@ from django.shortcuts import redirect
 from .dataPipeline import data_factory
 import io
 from .customExceptions import DataNotFoundError, DataFormatError
+from .utils import logger
+
 
 class API:
+    @logger
     @staticmethod
     def download(request: HttpRequest) -> HttpResponse:
         try:

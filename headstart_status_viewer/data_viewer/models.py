@@ -23,3 +23,4 @@ class Transaction(DBModelBase):
     params = models.CharField(max_length=100)
     status_code = models.IntegerField()
     ip = models.CharField(max_length=15, default='', null=False)
+    device = models.CharField(max_length=100, default='', null=False)

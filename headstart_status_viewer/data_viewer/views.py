@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpRequest
 from .dataPipeline import data_factory
-from .models import Transaction
 import json
 from .utils import CustomJSONEncoder
 from datetime import datetime
 from .customExceptions import DataNotFoundError, DataFormatError
+from .utils import logger
 
 
 def get_available_years():
@@ -13,31 +13,6 @@ def get_available_years():
     return list(range(2019, year_now + 1))
 
 granularity_available = ['county', 'state']
-        
-
-
-def log_event(request: HttpRequest, status_code: int):
-    try:
-        ip = request.META.get('REMOTE_ADDR')
-        params = request.GET.dict() or request.POST.dict()
-        path = request.path
-        met = request.method
-        new_record = Transaction(ip = ip, method=met, path=path, params=params, status_code=status_code)
-        new_record.save()
-    except Exception as e:
-        raise e
-    
-
-def logger(func):
-    def wrapper(request: HttpRequest, **kwargs):
-        try:
-            response = func(request, **kwargs)
-            status_code = response.status_code
-            log_event(request, status_code)
-            return response
-        except Exception as e:
-            raise e
-    return wrapper
 
 
 @logger
