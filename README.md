@@ -83,7 +83,7 @@ Our application also demonstrates the potential of automating data analytics pip
 
 1. On any systems installed with Docker, run command `docker pull chaconn3/hs_viewer` to fetch our Python server image.
 
-2. Copy the file `/Datamiers/headstart_status_viewer/compose.yaml` to any folder on your system.
+2. Copy the file `/Dataminers/headstart_status_viewer/compose.yaml` to any folder on your system.
 
 3. Run command `docker ccompose up -d` to start the services in detached mode.
 
