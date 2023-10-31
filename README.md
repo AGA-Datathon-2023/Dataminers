@@ -79,4 +79,12 @@ Our data pipeline provides the utility to extract the above listed datasets by y
 
 Our application also demonstrates the potential of automating data analytics pipeline, which helps practitioners to focus on the analytics tasks without having to write analysis irrelevant codes by themselves, thereby saving their time and better facilitate productivity.
 
-For a preview of our automated data pipeline, please visit http://chaconn3.me/  (this domain name is for demo purpose only)
+#### How to Run the Automated Pipeline:
+
+1. On any systems installed with Docker, run command `docker pull chaconn3/hs_viewer` to fetch our Python server image.
+
+2. Copy the file `/Datamiers/headstart_status_viewer/compose.yaml` to any folder on your system.
+
+3. Run command `docker ccompose up -d` to start the services in detached mode.
+
+4. Visit `http://localhost:8000` to use the web app.
