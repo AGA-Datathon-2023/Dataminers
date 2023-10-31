@@ -85,6 +85,6 @@ Our application also demonstrates the potential of automating data analytics pip
 
 2. Copy the file `/Dataminers/headstart_status_viewer/compose.yaml` to any folder on your system.
 
-3. Run command `docker ccompose up -d` to start the services in detached mode.
+3. Run command `docker compose up -d` to start the services in detached mode.
 
 4. Visit `http://localhost:8000` to use the web app.
