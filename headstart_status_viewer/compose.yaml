@@ -12,6 +12,7 @@ services:
       APP_DB_HOST: mysql
       APP_DB_USER: root
       APP_DB_PWD: root
+      APP_USE_MYSQL: 1
     depends_on:
       - mysql
   
