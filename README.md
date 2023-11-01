@@ -3,7 +3,6 @@
 # Members
 Zizheng  Zhang (Sean)
 
-Tel: 301-742-4626
 
 Bio:
 - Bachelor of Arts, Beijing University of Chemical Technology (Beijing, 2014-2019)
@@ -12,7 +11,6 @@ Bio:
 
 Yinming Gao (Randall)
 
-Tel: 240-413-2158
 
 Bio：
 - Bachelor of Science, Shandong University of Science and Technology （Shandong, 2017-2021）
