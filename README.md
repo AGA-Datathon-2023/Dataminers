@@ -3,6 +3,7 @@
 # Members
 Zizheng  Zhang (Sean)
 
+zzhang96@umd.edu
 
 Bio:
 - Bachelor of Arts, Beijing University of Chemical Technology (Beijing, 2014-2019)
@@ -11,6 +12,7 @@ Bio:
 
 Yinming Gao (Randall)
 
+yinminggao0811@gmail.com
 
 Bio：
 - Bachelor of Science, Shandong University of Science and Technology （Shandong, 2017-2021）
@@ -23,15 +25,15 @@ Established in 1965, Head Start promotes school readiness for children in low-in
 To better facilitate the course of Head Start, we analyzed public data to estimate the accessibility of the Head Start program in the contiguous United States. We constructed multiple metrics to measure and compare the accessibility of Head Start across the states and counties. The areas where communities might be underserved are identified by our metrics. Our analysis will help policy makers and federal agents to facilitate equal access to Head Start.
 
 # Technologies In-use
-Python: for data extraction, data analysis, statistical modeling, and Web API development.
+<b>Python</b>: for data extraction, data analysis, statistical modeling, and Web API development.
 
-Docker: for containerized deployment of web application
+<b>Docker</b>: for containerized deployment of web application
 
-HTML, CSS, javascript: for web page design and implement
+<b>HTML, CSS, javascript</b>: for web page design and implement
 
-Tableau: for data visualization.
+<b>Tableau</b>: for data visualization.
 
-PowerPoint: for the presentation of insights.
+<b>PowerPoint</b>: for the presentation of insights.
 
 # List of Python Libraries
 Please see the file `requirements.txt` for a comprehensive list of all the used Python libraries in this project.
