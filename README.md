@@ -1,4 +1,4 @@
-# Dataminers
+# Dataminers - Automated Analytics Pipeline for the Analysis of Head Start Accessibility and Equity
 
 #### How to Run the App:
 
